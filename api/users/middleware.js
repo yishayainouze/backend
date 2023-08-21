@@ -1,4 +1,3 @@
-// middleware.js
 
 // Middleware to check if user is an admin
 export const isAdmin = (req, res, next) => {
@@ -23,4 +22,3 @@ export const isAdmin = (req, res, next) => {
 
   
 
-  

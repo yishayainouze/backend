@@ -11,7 +11,6 @@ const usersService = {
 
     // Add the user
     const newUser = await usersDAL.createUser(user);
-
     return { success: true, message: 'Registration successful', user: newUser };
   },
 
@@ -23,8 +22,18 @@ const usersService = {
 
     return { success: true, message: 'Login successful', user };
   },
-};
+  
+  getAllUsersAdmin: async (email, password) => {
+    const admin = await usersDAL.getUserByEmail(email);
+    if (!admin || admin.password !== password || !admin.isAdmin) {
+      throw new Error('Invalid  not an admin.');
+    }
+    const allUsers = await usersDAL.getAllUsers();
+    return { success: true, message: 'admin access',users: allUsers};
 
+  }
+};
+// 
 export default usersService;
 
 
