@@ -1,4 +1,4 @@
-import express from 'express';
+import express,{cors} from 'express';
 import morgan from 'morgan';
 import router from './api/products/routes.product.js';
 import usersRouter from './api/users/routes.users.js'
