@@ -1,7 +1,8 @@
-import express,{cors} from 'express';
+import express from 'express';
+import cors from 'cors';
 import morgan from 'morgan';
 import router from './api/products/routes.product.js';
-import usersRouter from './api/users/routes.users.js'
+import usersRouter from './api/users/routes.users.js';
 
 const app = express();
 const PORT = 8080;
