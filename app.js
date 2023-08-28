@@ -7,6 +7,7 @@ const app = express();
 const PORT = 8080;
 
 app.use(express.json());
+app.use(cors());
 app.use(morgan('dev')); 
 
 app.use('/api/products',router)
