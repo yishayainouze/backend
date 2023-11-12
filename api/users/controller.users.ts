@@ -1,4 +1,4 @@
-import usersService from './service.users.js';
+import usersService from './service.users';
 
 const getAlllUsers = async (req:any, res:any) => {
     try {

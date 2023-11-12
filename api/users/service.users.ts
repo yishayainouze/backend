@@ -1,4 +1,4 @@
-import usersDAL from './Dal.users.js';
+import usersDAL from './Dal.users';
 
 const usersService = {
   getAllUsers: async () => usersDAL.getAllUsers(),
