@@ -7,7 +7,7 @@ const getUsersData = async () => {
   return data;
 };
 
-const saveUsersData = async (data) => {
+const saveUsersData = async (data:any) => {
   try {
     await jsonfile.writeFile(file, data,);
   } catch (error) {
@@ -20,22 +20,23 @@ const usersDAL = {
     const users = await getUsersData();
     return users;
   },
-  getUserByEmail: async (email) => {
+  getUserByEmail: async (email: string) => {
     const users = await getUsersData();
-    return users.find(user => user.email === email);
-  },
-  createUser: async (user) => {
+    return users.find((user: any) => user.email === email);
+  }
+  ,
+  createUser: async (user:any) => {
     const usersData = await getUsersData();
     usersData.push(user);
     await saveUsersData(usersData);
     return user;
   },
-  getAllUsersAdmin: async (admin) => {
+  getAllUsersAdmin: async (admin:any) => {
     const { email, password } = admin;
     const users = await getUsersData();
-    const findUser = users.find((user) => user.email === email);
-    const Email = users.find((user) => user.password === password);
-    const userIndex = users.findIndex((user) => user.email === email);
+    const findUser = users.find((user:any) => user.email === email);
+    const Email = users.find((user:any) => user.password === password);
+    const userIndex = users.findIndex((user:any) => user.email === email);
     if (users[userIndex].isAdmin && Email && findUser) {
       return users;
     } else {

@@ -2,7 +2,7 @@ import usersDAL from './Dal.users.js';
 
 const usersService = {
   getAllUsers: async () => usersDAL.getAllUsers(),
-  registerUser: async (user) => {
+  registerUser: async (user:any) => {
     // Check if email exists
     const existingUser = await usersDAL.getUserByEmail(user.email);
     if (existingUser) {
@@ -14,7 +14,7 @@ const usersService = {
     return { success: true, message: 'Registration successful', user: newUser };
   },
 
-  loginUser: async (email, password) => {
+  loginUser: async (email:any, password:any) => {
     const user = await usersDAL.getUserByEmail(email);
     if (!user || user.password !== password) {
       throw new Error('Invalid email or password.');
@@ -23,7 +23,7 @@ const usersService = {
     return { success: true, message: 'Login successful', user };
   },
   
-  getAllUsersAdmin: async (email, password) => {
+  getAllUsersAdmin: async (email:any, password:any) => {
     const admin = await usersDAL.getUserByEmail(email);
     if (!admin || admin.password !== password || !admin.isAdmin) {
       throw new Error('Invalid  not an admin.');
