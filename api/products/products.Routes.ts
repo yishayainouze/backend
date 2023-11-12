@@ -1,7 +1,7 @@
-import express from 'express';
-import productController from './productsController.js';
+import express, { Router, Request, Response } from 'express';
+import productController from './products.Controller';
 
-const router = express.Router();
+const router: Router = express.Router();
 
 router.get('/', productController.getAllProducts);
 router.get('/:id', productController.getProductById);
@@ -11,8 +11,6 @@ router.delete('/:id', productController.deleteProduct);
 router.patch('/:id', productController.updateProductQuantity);
 
 export default router;
-
-
 
 
 
@@ -86,24 +84,24 @@ export default router;
 // });
 
 // Increment or decrement product quantity by 1
-router.patch('/products/:id', (req, res) => {
-    const productId = parseInt(req.params.id);
-    const operation = req.body.operation; // 'increment' or 'decrement'
-    const index = products.findIndex(product => product.id === productId);
+// router.patch('/products/:id', (req, res) => {
+//     const productId = parseInt(req.params.id);
+//     const operation = req.body.operation; // 'increment' or 'decrement'
+//     const index = products.findIndex(product => product.id === productId);
 
-    if (index !== -1) {
-        if (operation === 'increment') {
-            products[index].quantity++;
-        } else if (operation === 'decrement') {
-            if (products[index].quantity > 0) {
-                products[index].quantity--;
-            }
-        }
-        res.json(products[index]);
-    } else {
-        res.status(404).json({ message: 'Product not found' });
-    }
-});
+//     if (index !== -1) {
+//         if (operation === 'increment') {
+//             products[index].quantity++;
+//         } else if (operation === 'decrement') {
+//             if (products[index].quantity > 0) {
+//                 products[index].quantity--;
+//             }
+//         }
+//         res.json(products[index]);
+//     } else {
+//         res.status(404).json({ message: 'Product not found' });
+//     }
+// });
 // export default router;
 
 
