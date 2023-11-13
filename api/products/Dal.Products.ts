@@ -1,6 +1,6 @@
 // Dal.Products.ts
 
-import ProductModel, { Product } from './products.model';
+import {ProductModel,  Product } from './products.model';
 
 const productDAL = {
     getAllProducts: async (): Promise<Product[]> => {
