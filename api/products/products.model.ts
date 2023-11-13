@@ -1,5 +1,5 @@
 // products.model.ts
-
+import Joi from 'joi';
 import mongoose, { Document, Schema } from 'mongoose';
 
 export interface Product extends Document {
@@ -37,5 +37,20 @@ const productSchema = new Schema<Product>({
 });
 
 const ProductModel = mongoose.model<Product>('product', productSchema,'products');
-
-export default ProductModel;
+const productJoiSchema = Joi.object({
+    id: Joi.number().required(),
+    name: Joi.string().required(),
+    category: Joi.string().required(),
+    commonAttributes: Joi.object({
+        price: Joi.number().required(),
+        manufacturer: Joi.string().required(),
+        description: Joi.string().required(),
+        imageURL: Joi.string().required(),
+    }).required(),
+    categoryAttributes: Joi.object({
+        resolution: Joi.string().required(),
+        screen_size: Joi.string().required(),
+    }).required(),
+    quantity: Joi.number().min(0).default(0),
+});
+export { ProductModel, productJoiSchema };

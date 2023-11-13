@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import productService from './product.service';
+import { ProductModel, productJoiSchema } from './products.model';
 
 // Get all products
 const getAllProducts = async (req: Request, res: Response): Promise<void> => {

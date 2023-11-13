@@ -1,4 +1,5 @@
 import usersService from './service.users';
+import { UserModel, userJoiSchema } from './users.model';
 
 const getAlllUsers = async (req:any, res:any) => {
     try {
