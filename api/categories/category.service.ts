@@ -7,8 +7,20 @@ export class CategoryService {
   }
 
   async getCategoryById(id: string) {
-    return await CategoryModel.findById(id).exec();
+    console.log("seervice"+ CategoryModel.findById(id));
+    return await CategoryModel.findById(id);
   }
+
+
+//   async function handleRequest() {
+//     try {
+//         const categoryId = '6551f4a1954043cf6d8650c2'; // לדוגמא
+//         const categoryData = await categoryService.getCategoryById(categoryId);
+//         console.log('service', categoryData);
+//     } catch (error) {
+//         console.error('Error:', error);
+//     }
+// }
 
   // async createCategory(categoryData: any) {
   //   const category = new CategoryModel(categoryData);

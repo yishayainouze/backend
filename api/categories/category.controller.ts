@@ -11,6 +11,7 @@ export class CategoryController {
 
   async getCategoryById(req: Request, res: Response) {
     const categoryId = req.params.id;
+    console.log("controller "+categoryId);
     return await categoryService.getCategoryById(categoryId);
   }
 

@@ -5,7 +5,6 @@ export interface Category extends Document {
   img: string;
   name: string;
   description: string;
-
 }
 
 const categorySchema = new Schema<Category>({
