@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
       res.json(categories);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: 'Internal11111111 Server Error' });
+      res.status(500).json({ error: 'Internal1 Server Error' });
     }
   });
 
@@ -25,7 +25,15 @@ router.get('/', async (req, res) => {
     }
   });
 // router.post('/', categoryController.createCategory);
-router.put('/:id', categoryController.updateCategory);
+router.put('/:id', async (req, res) => {
+  try {
+    const updatedCategory = await categoryController.updateCategory(req, res);
+    res.json(updatedCategory);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 // router.delete('/:id', categoryController.deleteCategory);
 
 export default router;

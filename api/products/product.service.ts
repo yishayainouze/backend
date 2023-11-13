@@ -9,11 +9,9 @@ const productService = {
     deleteProduct: async (id: number): Promise<Product | null> => ProductModel.findOneAndDelete({ id }),
     updateProductQuantity: async (id: number, operation: string): Promise<Product | null> => {
         const product = await ProductModel.findOne({ id });
-
         if (!product) {
             return null; // Product not found
         }
-
         if (operation === 'increment') {
             product.quantity += 1;
         } else if (operation === 'decrement') {
