@@ -10,10 +10,10 @@ export class CategoryService {
     return await CategoryModel.findById(id).exec();
   }
 
-  async createCategory(categoryData: any) {
-    const category = new CategoryModel(categoryData);
-    return await category.save();
-  }
+  // async createCategory(categoryData: any) {
+  //   const category = new CategoryModel(categoryData);
+  //   return await category.save();
+  // }
 
   async updateCategory(id: string, categoryData: any) {
     return await CategoryModel.findByIdAndUpdate(id, categoryData, { new: true }).exec();

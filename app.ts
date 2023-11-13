@@ -4,7 +4,7 @@ import cors, { CorsOptions } from 'cors';
 import morgan from 'morgan';
 import productRoute from './api/products/products.Routes';
 import usersRoute from './api/users/routes.users';
-
+import categoryRouter from './api/categories/category.routes'
 import mongoose from 'mongoose';
 
 const app: express.Application = express();

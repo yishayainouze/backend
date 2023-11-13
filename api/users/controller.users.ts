@@ -86,7 +86,7 @@ const updateUserById = async (req: any, res: any) => {
     console.log("controller1 "+ userId);
     try {
         const updatedUserData = req.body;
-        // console.log("controller "+ updatedUserData);
+        console.log("controller "+ updatedUserData);
         const updatedUser = await usersService.updateUserById(userId, updatedUserData);
         if (!updatedUser) {
             return res.status(404).json({ message: 'User not found' });
