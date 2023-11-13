@@ -2,10 +2,10 @@
 import express from 'express';
 import cors, { CorsOptions } from 'cors';
 import morgan from 'morgan';
+import productRoute from './api/products/products.Routes';
+import usersRoute from './api/users/routes.users';
+
 import mongoose from 'mongoose';
-import router from './api/products/products.Routes';
-import usersRouter from './api/users/routes.users';
-import categoryRouter from './api/categories/category.routes'; 
 
 const app: express.Application = express();
 const PORT: number = 8080;
@@ -29,8 +29,8 @@ app.use(express.json());
 app.use(cors(corsOptions));
 app.use(morgan('dev'));
 
-app.use('/api/products', router);
-app.use('/api/users', usersRouter);
+app.use('/api/products', productRoute);
+app.use('/api/users', usersRoute);
 app.use('/api/categories', categoryRouter); 
 
 app.listen(PORT, () => {
