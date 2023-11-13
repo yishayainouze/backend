@@ -23,8 +23,30 @@ const usersDAL = {
   getUserByEmail: async (email: string) => {
     const users = await getUsersData();
     return users.find((user: any) => user.email === email);
+  },
+  getUserById: async (userId: string) => {
+    const users = await getUsersData();
+    console.log("Users Data:", users);
+    const foundUser = users.find((user: any) => user.id === Number(userId));
+    console.log("Found User:", foundUser);
+    return foundUser;
+},
+updateUserById: async (userId: string, updateData: any) => {
+  const users = await getUsersData();
+  const userIndex = users.findIndex((user: any) => user.id === Number(userId));
+  
+  if (userIndex === -1) {
+    throw new Error('User not found.');
   }
-  ,
+
+  // Update the user's data
+  users[userIndex] = { ...users[userIndex], ...updateData };
+
+  // Save the updated users data
+  await saveUsersData(users);
+
+  return users[userIndex];
+},
   createUser: async (user:any) => {
     const usersData = await getUsersData();
     usersData.push(user);
