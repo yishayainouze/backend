@@ -16,7 +16,8 @@ export interface Product extends Document {
         resolution: string;
         screen_size: string;
     };
-    quantity: number; 
+    quantity: number;
+    numberOfClicks: number; // Add this line
 }
 
 const productSchema = new Schema<Product>({
@@ -33,10 +34,11 @@ const productSchema = new Schema<Product>({
         resolution: { type: String, required: true },
         screen_size: { type: String, required: true },
     },
-    quantity: { type: Number, default: 0 }, // Add this line
+    quantity: { type: Number, default: 0 },
+    numberOfClicks: { type: Number, default: 0 }, // Add this line
 });
 
-const ProductModel = mongoose.model<Product>('product', productSchema,'products');
+const ProductModel = mongoose.model<Product>('product', productSchema, 'products');
 const productJoiSchema = Joi.object({
     id: Joi.number().required(),
     name: Joi.string().required(),
@@ -52,5 +54,7 @@ const productJoiSchema = Joi.object({
         screen_size: Joi.string().required(),
     }).required(),
     quantity: Joi.number().min(0).default(0),
+    numberOfClicks: Joi.number().min(0).default(0),
 });
+
 export { ProductModel, productJoiSchema };

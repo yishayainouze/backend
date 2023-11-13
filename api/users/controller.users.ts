@@ -1,5 +1,6 @@
 import usersService from './service.users';
 import { UserModel, userJoiSchema } from './users.model';
+import { Types } from 'mongoose';
 import Joi from 'joi';
 
 const loginUserSchema = Joi.object({
@@ -78,13 +79,14 @@ const registerUser = async (req: any, res: any) => {
 };
 
 const updateUserById = async (req: any, res: any) => {
-    const userId = req.params.id;
-    console.log("controller1 "+ userId);
     const { error } = updateUserSchema.validate(req.body);
     if (error) return res.status(400).json({ message: error.details[0].message });
+
+    const userId = new Types.ObjectId(req.params.id);
+    console.log("controller1 "+ userId);
     try {
         const updatedUserData = req.body;
-        console.log("controller "+ updatedUserData);
+        // console.log("controller "+ updatedUserData);
         const updatedUser = await usersService.updateUserById(userId, updatedUserData);
         if (!updatedUser) {
             return res.status(404).json({ message: 'User not found' });

@@ -1,4 +1,5 @@
 
+import { Types } from 'mongoose';
 import { UserModel } from './users.model'; 
 
 const usersDAL = {
@@ -21,7 +22,7 @@ const usersDAL = {
   },
 
 
- getUserById :async (userId: string) => {
+ getUserById :async (userId: Types.ObjectId) => {
     try {
         const user = await UserModel.findById(userId);
         console.log("Found User:", user);

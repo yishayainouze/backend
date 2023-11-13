@@ -1,7 +1,9 @@
+import { Types } from 'mongoose';
 import usersDAL from './Dal.users';
 
 const usersService = {
   getAllUsers: async () => usersDAL.getAllUsers(),
+
   registerUser: async (user:any) => {
     // Check if email exists
     const existingUser = await usersDAL.getUserByEmail(user.email);
@@ -11,7 +13,7 @@ const usersService = {
 
     // Add the user
     const newUser = await usersDAL.createUser(user);
-    if (!newUser) throw new Error("505");
+    if (!newUser) throw new Error("faild to create user");
     
     return { success: true, message: 'Registration successful', user: newUser };
   },
@@ -23,7 +25,7 @@ const usersService = {
     }
     return { success: true, message: 'User retrieval successful', user };
   },
-  updateUserById: async (userId: string, updateData: any) => {
+  updateUserById: async (userId: Types.ObjectId, updateData: any) => {
     // Optional: Validate updateData or check if the user exists
     const existingUser = await usersDAL.getUserById(userId);
     if (!existingUser) {
