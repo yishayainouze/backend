@@ -1,8 +1,8 @@
 import express, { Request, Response, NextFunction } from 'express';
 import cors, { CorsOptions } from 'cors';
 import morgan from 'morgan';
-import router from './api/products/products.Routes';
-import  usersRouter  from './api/users/routes.users';
+import productRoute from './api/products/products.Routes';
+import usersRoute from './api/users/routes.users';
 
 import mongoose from 'mongoose';
 
@@ -27,8 +27,8 @@ app.use(express.json());
 app.use(cors(corsOptions));
 app.use(morgan('dev'));
 
-app.use('/api/products', router);
-app.use('/api/users', usersRouter);
+app.use('/api/products', productRoute);
+app.use('/api/users', usersRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

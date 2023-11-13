@@ -1,15 +1,15 @@
 
-import express from 'express';
-import  usersController from './controller.users';
+// import express from 'express';
+// import  usersController from './controller.users';
 
-const usersRouter = express.Router();
+// const usersRouter = express.Router();
 
-usersRouter.get('/',usersController.getAlllUsers)
-usersRouter.post('/register', usersController.registerUser);
-usersRouter.post('/login', usersController.loginUser);
-usersRouter.post('/admin',usersController.getAllUsersAdmin)
+// usersRouter.get('/',usersController.getAlllUsers)
+// usersRouter.post('/register', usersController.registerUser);
+// usersRouter.post('/login', usersController.loginUser);
+// // usersRouter.post('/admin',usersController.getAllUsersAdmin)
 
-export default usersRouter;
+// export default usersRouter;
 
 
 

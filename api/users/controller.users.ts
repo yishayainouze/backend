@@ -79,10 +79,12 @@ const registerUser = async (req: any, res: any) => {
 
 const updateUserById = async (req: any, res: any) => {
     const userId = req.params.id;
+    console.log("controller1 "+ userId);
     const { error } = updateUserSchema.validate(req.body);
     if (error) return res.status(400).json({ message: error.details[0].message });
     try {
         const updatedUserData = req.body;
+        console.log("controller "+ updatedUserData);
         const updatedUser = await usersService.updateUserById(userId, updatedUserData);
         if (!updatedUser) {
             return res.status(404).json({ message: 'User not found' });
@@ -121,26 +123,26 @@ const loginUser = async (req: any, res: any) => {
         }
     }
 };
-const getAllUsersAdmin = async (req: any, res: any) => {
-    const { email, password } = req.body;
-    try {
-        const user = await usersService.getAllUsersAdmin(email, password);
-        res.status(200).json(user);
-    } catch (error) {
-        if (error instanceof Error) {
-            res.status(401).json({ message: error.message });
-        } else {
-            res.status(500).json({ message: 'An unknown error occurred' });
-        }
-    }
-};
+// const getAllUsersAdmin = async (req: any, res: any) => {
+//     const { email, password } = req.body;
+//     try {
+//         const user = await usersService.getAllUsersAdmin(email, password);
+//         res.status(200).json(user);
+//     } catch (error) {
+//         if (error instanceof Error) {
+//             res.status(401).json({ message: error.message });
+//         } else {
+//             res.status(500).json({ message: 'An unknown error occurred' });
+//         }
+//     }
+// };
 
 
 export default {
     getAlllUsers,
     registerUser,
     loginUser,
-    getAllUsersAdmin,
+    // getAllUsersAdmin,
     getUserByID, 
     updateUserById
 };

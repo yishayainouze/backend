@@ -50,15 +50,15 @@ const usersService = {
     return { success: true, message: 'Login successful', user };
   },
   
-  getAllUsersAdmin: async (email:any, password:any) => {
-    const admin = await usersDAL.getUserByEmail(email);
-    if (!admin || admin.password !== password || !admin.isAdmin) {
-      throw new Error('Invalid  not an admin.');
-    }
-    const allUsers = await usersDAL.getAllUsers();
-    return { success: true, message: 'admin access',users: allUsers};
+//   getAllUsersAdmin: async (email:any, password:any) => {
+//     const admin = await usersDAL.getUserByEmail(email);
+//     if (!admin || admin.password !== password || !admin.isAdmin) {
+//       throw new Error('Invalid  not an admin.');
+//     }
+//     const allUsers = await usersDAL.getAllUsers();
+//     return { success: true, message: 'admin access',users: allUsers};
 
-  }
+//   }
 };
 // 
 export default usersService;
