@@ -5,7 +5,7 @@ const usersService = {
   registerUser: async (user:any) => {
     // Check if email exists
     const existingUser = await usersDAL.getUserByEmail(user.email);
-    if (existingUser) {
+    if (existingUser) {////////*
       throw new Error('User with this email already exists.');
     }
 

@@ -1,4 +1,4 @@
-import ProductModel, { Product } from './products.model';
+import { ProductModel, Product } from './products.model';
 
 const productService = {
     getAllProducts: async (): Promise<Product[]> => ProductModel.find({}),
