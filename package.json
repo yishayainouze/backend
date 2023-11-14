@@ -5,9 +5,8 @@
   "main": "app.ts",
   "type": "commonjs",
   "scripts": {
-    "serve": "npm run build && node dist/app.js",
+    "start": "npm run build && node dist/app.js",
     "build": "tsc",
-    "start": "nodemon --exec ts-node dist/app.js",
     "dev": "ts-node-dev app.ts"
   },
   "author": "",
