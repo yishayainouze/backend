@@ -27,7 +27,7 @@ const usersService = {
   },
   updateUserById: async (userId: Types.ObjectId, updateData: any) => {
     // Optional: Validate updateData or check if the user exists
-    const existingUser = await usersDAL.getUserById(userId);
+    const existingUser = await usersDAL.getUserByMongoId(userId);
     if (!existingUser) {
       throw new Error('User not found.');
     }

@@ -1,4 +1,3 @@
-
 import { Types } from 'mongoose';
 import { UserModel } from './users.model'; 
 
@@ -22,10 +21,20 @@ const usersDAL = {
   },
 
 
- getUserById :async (userId: Types.ObjectId) => {
+ getUserById :async (userId: string) => {
     try {
         const user = await UserModel.findById(userId);
-        console.log("Found User:", user);
+        console.log("Found User:");
+        return user;
+    } catch (error) {
+        console.error('Error fetching user by ID:', error);
+        throw error; 
+    }
+},
+ getUserByMongoId :async (userId: Types.ObjectId) => {
+    try {
+        const user = await UserModel.findById(userId);
+        console.log("Found User:");
         return user;
     } catch (error) {
         console.error('Error fetching user by ID:', error);
@@ -33,7 +42,7 @@ const usersDAL = {
     }
 },
 
-  updateUserById: async (userId: string, updateData: any) => {
+  updateUserById: async (userId: Types.ObjectId, updateData: any) => {
     try {
       return await UserModel.findByIdAndUpdate(userId, updateData, { new: true });
     } catch (error) {

@@ -11,13 +11,14 @@ export class CategoryController {
 
   async getCategoryById(req: Request, res: Response) {
     const categoryId = req.params.id;
+    console.log("controller "+categoryId);
     return await categoryService.getCategoryById(categoryId);
   }
 
-  async createCategory(req: Request, res: Response) {
-    const categoryData = req.body;
-    return await categoryService.createCategory(categoryData);
-  }
+  // async createCategory(req: Request, res: Response) {
+  //   const categoryData = req.body;
+  //   return await categoryService.createCategory(categoryData);
+  // }
 
   async updateCategory(req: Request, res: Response) {
     const categoryId = req.params.id;
